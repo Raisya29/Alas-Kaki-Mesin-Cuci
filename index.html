@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alas Kaki Mesin Cuci Premium - Bestbrand Shop</title>
+    <meta name="description" content="Tatakan alas pelindung premium untuk mesin cuci, kulkas, dan furniture lainnya. Lindungi perabot Anda dari benturan dan kelembaban lantai.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        charcoal: '#36454f',
+                        gold: '#d4af37',
+                        champagne: '#f7e7ce',
+                        white: '#ffffff',
+                    },
+                    fontFamily: {
+                        heading: ['Cormorant Garamond', 'serif'],
+                        body: ['Open Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles */
+        :root {
+            --color-black: #000000;
+            --color-charcoal: #36454f;
+            --color-gold: #d4af37;
+            --color-champagne: #f7e7ce;
+            --color-white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        /* Hero Gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(54,69,79,0.85) 100%);
+        }
+        
+        /* Glassmorphism Effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Button Hover Effects */
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Price Tag Styling */
+        .original-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        
+        .discount-price {
+            color: #ef4444;
+        }
+        
+        /* Testimonial Stars */
+        .star-rating {
+            color: #ffd700;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        /* Social Proof Popup */
+        .social-proof-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 16px;
+            z-index: 100;
+            transform: translateX(120%);
+            transition: transform 0.5s ease;
+            border-left: 4px solid #d4af37;
+        }
+        
+        .social-proof-popup.active {
+            transform: translateX(0);
+        }
+        
+        /* Testimonial Carousel */
+        .testimonial-carousel {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-slide {
+            flex: 0 0 auto;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .testimonial-slide {
+                width: 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .testimonial-slide {
+                width: 33.333%;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b8941f;
+        }
+        
+        /* Loading Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Form Styling Overrides for OrderOnline */
+        .ooef .form-control {
+            font-family: 'Open Sans', sans-serif !important;
+            border-radius: 8px !important;
+            border: 1px solid #e5e7eb !important;
+            padding: 12px 16px !important;
+        }
+        
+        .ooef .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%) !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 12px 24px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+        
+        .ooef .form-group {
+            margin-bottom: 1rem !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-body">
+    <!-- Social Proof Popup -->
+    <div id="socialProofPopup" class="social-proof-popup">
+        <div class="flex items-start">
+            <div class="flex-shrink-0">
+                <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-ll3ai412lkq953.webp" alt="Customer" class="w-10 h-10 rounded-full object-cover">
+            </div>
+            <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900" id="popupName"></p>
+                <p class="text-xs text-gray-500" id="popupTime"></p>
+                <p class="text-sm text-gray-700 mt-1" id="popupMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-black text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-heading font-bold text-gold">Bestbrand Shop</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#features" class="hover:text-gold transition-colors">Fitur</a>
+                <a href="#gallery" class="hover:text-gold transition-colors">Galeri</a>
+                <a href="#testimonials" class="hover:text-gold transition-colors">Testimoni</a>
+                <a href="#order" class="hover:text-gold transition-colors">Pesan</a>
+            </nav>
+            <button class="md:hidden">
+                <i data-feather="menu" class="text-white"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://cdn.newfastcdn.com/image/4fe8e7bcadb0fac0ab10b432de7283a3b6c1f7c4-600.webp');">
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="container mx-auto px-4 z-10 text-center text-white" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-heading font-bold mb-4">Alas Kaki Mesin Cuci Premium</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Lindungi perabot elektronik Anda dari benturan dan kelembaban dengan tatakan alas berkualitas tinggi</p>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
+                <div class="text-center">
+                    <span class="original-price text-xl">Rp 180.000</span>
+                    <span class="discount-price text-3xl font-bold ml-2">Rp 147.000 4 pcs</span>
+                </div>
+                <div class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                    Hemat 18%
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <div class="pulse-animation inline-block">
+                    <a href="#order" class="btn-primary bg-gold text-black font-bold py-4 px-8 rounded-lg text-lg inline-block">PESAN SEKARANG</a>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-6 mt-8">
+                <div class="flex items-center">
+                    <i data-feather="truck" class="mr-2 text-gold"></i>
+                    <span>Pengiriman Cepat</span>
+                </div>
+                <div class="flex items-center">
+                    <i data-feather="star" class="mr-2 text-gold"></i>
+                    <span>bahan Premium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-champagne">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="fade-up">Mengapa Memilih Produk Kami?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="shield" class="text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-2">Perlindungan Maksimal</h3>
+                    <p class="text-gray-700">Mencegah benturan langsung dengan lantai saat mesin beroperasi</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="droplet" class="text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-2">Anti Lembab</h3>
+                    <p class="text-gray-700">Melindungi dari basah dan kotoran lantai, menjaga kebersihan</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="tool" class="text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-2">Mudah Dibersihkan</h3>
+                    <p class="text-gray-700">Memberikan ruang di bawah perabot untuk pembersihan mudah</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="box" class="text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-2">Multi Fungsi</h3>
+                    <p class="text-gray-700">Cocok untuk mesin cuci, kulkas, meja, kursi, dan furniture lainnya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="fade-up">Galeri Produk</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="overflow-hidden rounded-lg shadow-md cursor-pointer" data-aos="zoom-in" onclick="openLightbox('https://down-id.img.susercontent.com/file/id-11134207-7r98p-lr5v06d249wn0d.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lr5v06d249wn0d.webp" alt="Alas Kaki Mesin Cuci 1" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox('https://down-id.img.susercontent.com/file/id-11134207-7r98p-ll3ai412pseq62.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-ll3ai412pseq62.webp" alt="Alas Kaki Mesin Cuci 2" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox('https://down-id.img.susercontent.com/file/id-11134207-7r990-ll3ai412mz9udf.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r990-ll3ai412mz9udf.webp" alt="Alas Kaki Mesin Cuci 3" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox('https://down-id.img.susercontent.com/file/id-11134207-7r98y-ll3ai412lkfw6d.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98y-ll3ai412lkfw6d.webp" alt="Alas Kaki Mesin Cuci 4" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox('https://down-id.img.susercontent.com/file/id-11134207-7r98w-ll3ai412oduaee.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98w-ll3ai412oduaee.webp" alt="Alas Kaki Mesin Cuci 5" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                    <div class="overflow-hidden rounded-lg shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox('https://down-id.img.susercontent.com/file/id-11134207-7r98o-ll32mgigb44r0d.webp')">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98o-ll32mgigb44r0d.webp" alt="Alas Kaki Mesin Cuci 5" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="fade-up">Testimoni Pelanggan</h2>
+            
+            <div class="testimonial-carousel relative overflow-hidden">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide px-4">
+                        <div class="bg-white rounded-xl shadow-md p-6 h-full">
+                            <div class="flex items-center mb-4">
+                                <img src="https://i.pinimg.com/736x/e4/fc/4b/e4fc4b27960dec84b445dc76aa62b2f3.jpg" alt="oktavyanne10" class="w-10 h-10 rounded-full object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-semibold">oktavyanne10</h4>
+                                    <div class="star-rating flex">
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4">"Mesin cucinya jd tinggi. jd cantik dn mempermudah utk bersih2 di bawah mesin"</p>
+                            <img src="https://down-id.img.susercontent.com/file/64ad291a80951c49c22581bc891ece99.webp" alt="Testimonial Image" class="w-20 h-20 rounded-md object-cover cursor-pointer" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide px-4">
+                        <div class="bg-white rounded-xl shadow-md p-6 h-full">
+                            <div class="flex items-center mb-4">
+                                <img src="https://i.pinimg.com/736x/a3/31/fd/a331fdd2b28c14a46d4a5354f35eeb59.jpg" alt="ameliabarus" class="w-10 h-10 rounded-full object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-semibold">ameliabarus</h4>
+                                    <div class="star-rating flex">
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4">"Alas untuk mesin cuci, berfungi sesuai dengan deskripsi"</p>
+                            <img src="https://down-id.img.susercontent.com/file/8c5fd8bc0a8fce438c3876b5c8c3ec50.webp" alt="Testimonial Image" class="w-20 h-20 rounded-md object-cover cursor-pointer" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide px-4">
+                        <div class="bg-white rounded-xl shadow-md p-6 h-full">
+                            <div class="flex items-center mb-4">
+                                <img src="https://i.pinimg.com/1200x/18/8d/e6/188de6ed3e7d5f5030ed3239932d381c.jpg" alt="elly0583" class="w-10 h-10 rounded-full object-cover">
+                                <div class="ml-3">
+                                    <h4 class="font-semibold">elly0583</h4>
+                                    <div class="star-rating flex">
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                        <i data-feather="star" class="fill-current w-4 h-4"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4">"Alhamdulillah paket sudah sampai dengan selamat!terimakasih Abang kurir!"</p>
+                            <img src="https://down-id.img.susercontent.com/file/id-11134103-7qul4-lkbpxxoi9ubd26.webp" alt="Testimonial Image" class="w-20 h-20 rounded-md object-cover cursor-pointer" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md ml-2" onclick="prevTestimonial()">
+                    <i data-feather="chevron-left"></i>
+                </button>
+                <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md mr-2" onclick="nextTestimonial()">
+                    <i data-feather="chevron-right"></i>
+                </button>
+                
+                <div class="flex justify-center mt-6 space-x-2" id="testimonialDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img src="" alt="Lightbox Image" id="lightboxImg" class="max-w-full max-h-full">
+        </div>
+    </div>
+
+    <!-- Order Section -->
+    <section id="order" class="py-16 bg-charcoal text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="fade-up">Pesan Sekarang</h2>
+            
+            <div class="max-w-4xl mx-auto glass-effect rounded-2xl p-8" data-aos="fade-up">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-heading font-semibold mb-2">Alas Kaki Mesin Cuci Premium</h3>
+                    <div class="flex items-center justify-center gap-4">
+                        <span class="original-price text-lg">Rp 180.000</span>
+                        <span class="discount-price text-2xl font-bold">Rp 147.000 4 pcs</span>
+                    </div>
+                    <p class="text-gold mt-2 font-semibold">Beli Lebih Banyak Hemat Lebih Banyak!</p>
+                </div>
+                
+                <!-- OrderOnline Embed Code -->
+                <div class="ooef">
+                    <form class="orderonline-embed-form" data-username="vera" data-product-slug="alas-kaki-mesin-cuci" data-product-id="68c700d71492a51cb70ca7b9" id="oo-embed-form-alas-kaki-mesin-cuci-226" data-origin="orderonline">
+                        <div class="ooef-loader">
+                            <style>
+                                .ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}
+                                @keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}
+                                @-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}
+                                .ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}
+                                .ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}
+                                .ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}
+                                @-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}
+                                @keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}
+                            </style>
+                            <div aria-live="polite" role="status"><div>Loading...</div></div>
+                        </div>
+                    </form>
+                </div>
+                <script>
+                    if (typeof xLogError != 'function') {
+                        var xLogError = function (error) {
+                            var req = new XMLHttpRequest();
+                            var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack });
+                            var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                            req.open('POST', 'https://api.orderonline.id/log', true);
+                            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                            req.send(params);
+                        };
+                    }
+                    try {
+                        if (typeof xEmbedScript != 'function') {
+                            var xEmbedScript = function () {
+                                !function(w, d, e, v, id, t, s) {
+                                    if (d.getElementById(id)) return;
+                                    t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                    s = d.getElementsByTagName(e)[0];
+                                    s.parentNode.insertBefore(t, s);
+                                }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                            };
+                        }
+                        if (typeof xEmbedInit != 'function') {
+                            var xEmbedInit = function (w, n) {
+                                if (w.ooe) return;
+                                n = w.ooe = function() {
+                                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                };
+                                if (!w._ooe) w._ooe = n;
+                                n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                            };
+                        }
+                        xEmbedInit(window);
+                        ooe('setup', 'redirect', 'https://vera.orderonline.id');
+                        ooe('init', '5f1a7807a9bf807d6c63d963', '68c700d71492a51cb70ca7b9', '68c700d71492a51cb70ca7ba', 'oo-embed-form-alas-kaki-mesin-cuci-226', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":true,"triggerGtm":true});
+                        if (!window.jQuery) {
+                            !function(w, d, e, v, id, t, s) {
+                                if (d.getElementById(id)) return;
+                                t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                                t.addEventListener('load', xEmbedScript);
+                                s = d.getElementsByTagName(e)[0];
+                                s.parentNode.insertBefore(t, s);
+                            }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+                        } else {
+                            xEmbedScript();
+                        }
+                    } catch (e) {
+                        xLogError(e);
+                        throw e;
+                    }
+                </script>
+                <!-- End OrderOnline Embed Code -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sticky CTA Button -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 z-40 md:hidden">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <span class="original-price block text-sm">Rp 180.000</span>
+                <span class="discount-price text-lg font-bold">Rp 147.000</span>
+            </div>
+            <a href="#order" class="bg-gold text-black font-bold py-2 px-6 rounded-lg">PESAN</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Testimonial Carousel
+        let currentTestimonial = 0;
+        const testimonialTrack = document.getElementById('testimonialTrack');
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const testimonialDots = document.getElementById('testimonialDots');
+        
+        // Create dots
+        for (let i = 0; i < testimonialSlides.length; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-gray-300');
+            dot.addEventListener('click', () => {
+                goToTestimonial(i);
+            });
+            testimonialDots.appendChild(dot);
+        }
+        
+        const dots = testimonialDots.querySelectorAll('button');
+        
+        function updateTestimonialDots() {
+            dots.forEach((dot, index) => {
+                if (index === currentTestimonial) {
+                    dot.classList.add('bg-gold');
+                    dot.classList.remove('bg-gray-300');
+                } else {
+                    dot.classList.remove('bg-gold');
+                    dot.classList.add('bg-gray-300');
+                }
+            });
+        }
+        
+        function goToTestimonial(index) {
+            currentTestimonial = index;
+            const slideWidth = testimonialSlides[0].offsetWidth;
+            testimonialTrack.style.transform = `translateX(-${currentTestimonial * slideWidth}px)`;
+            updateTestimonialDots();
+        }
+        
+        function nextTestimonial() {
+            if (currentTestimonial < testimonialSlides.length - 1) {
+                goToTestimonial(currentTestimonial + 1);
+            } else {
+                goToTestimonial(0);
+            }
+        }
+        
+        function prevTestimonial() {
+            if (currentTestimonial > 0) {
+                goToTestimonial(currentTestimonial - 1);
+            } else {
+                goToTestimonial(testimonialSlides.length - 1);
+            }
+        }
+        
+        // Auto scroll testimonials
+        let testimonialInterval = setInterval(nextTestimonial, 5000);
+        
+        // Pause on hover
+        const testimonialCarousel = document.querySelector('.testimonial-carousel');
+        testimonialCarousel.addEventListener('mouseenter', () => {
+            clearInterval(testimonialInterval);
+        });
+        
+        testimonialCarousel.addEventListener('mouseleave', () => {
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        });
+        
+        // Lightbox functionality
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Social Proof Popup
+        const socialProofPopup = document.getElementById('socialProofPopup');
+        const popupName = document.getElementById('popupName');
+        const popupTime = document.getElementById('popupTime');
+        const popupMessage = document.getElementById('popupMessage');
+        
+        const customerNames = ['Vina', 'Dina', 'Kartika', 'Lestari', 'Putri', 'Maya Sari', 'Rani', 'Permata', 'Lestari F'];
+        const customerCities = ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Bekasi', 'Tangerang', 'Depok', 'Semarang'];
+        
+        function showSocialProof() {
+            const randomName = customerNames[Math.floor(Math.random() * customerNames.length)];
+            const randomCity = customerCities[Math.floor(Math.random() * customerCities.length)];
+            const randomMinutes = Math.floor(Math.random() * 15) + 1;
+            
+            popupName.textContent = randomName;
+            popupTime.textContent = `${randomMinutes} menit yang lalu`;
+            popupMessage.textContent = `${randomName} dari ${randomCity} baru saja memesan Alas Kaki Mesin Cuci`;
+            
+            socialProofPopup.classList.add('active');
+            
+            setTimeout(() => {
+                socialProofPopup.classList.remove('active');
+            }, 5000);
+        }
+        
+        // Show first popup after 3 seconds
+        setTimeout(showSocialProof, 3000);
+        
+        // Set interval for popups
+        setInterval(showSocialProof, 8000);
+        
+        // Pause on hover
+        socialProofPopup.addEventListener('mouseenter', () => {
+            clearTimeout();
+        });
+        
+        // Initialize carousel on load
+        window.addEventListener('load', () => {
+            updateTestimonialDots();
+            
+            // Responsive adjustments
+            function handleResize() {
+                goToTestimonial(currentTestimonial);
+            }
+            
+            window.addEventListener('resize', handleResize);
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
+        const header = document.querySelector('header');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            header.classList.toggle('h-auto');
+            const nav = header.querySelector('nav');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-full');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('right-0');
+            nav.classList.toggle('bg-black');
+            nav.classList.toggle('p-4');
+            nav.classList.toggle('space-y-4');
+        });
+    </script>
+</body>
+</html>
